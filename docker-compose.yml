@@ -1,0 +1,27 @@
+version: "3.8"
+
+services:
+  valhalla:
+    image: ghcr.io/valhalla/valhalla-scripted:latest
+    container_name: valhalla
+    restart: unless-stopped
+    ports:
+      - "8002:8002"
+    volumes:
+      - ./valhalla/custom_files:/custom_files
+    environment:
+      # Automatically use all .osm.pbf files in /custom_files directory
+      # Place your .osm.pbf files in ./valhalla/custom_files/
+      - tile_urls=/custom_files/*.osm.pbf
+      - server_threads=4
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8002/status"]
+      interval: 30s
+      timeout: 10s
+      retries: 10
+      start_period: 60s
+
+
+networks:
+  default:
+    name: maps-stack

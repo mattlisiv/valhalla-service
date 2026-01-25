@@ -1,0 +1,6 @@
+.idea/
+.DS_Store
+valhalla/custom_files/
+tileserver/data/
+routing/data/
+routing/__pycache__
