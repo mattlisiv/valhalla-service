@@ -7,7 +7,7 @@ git clone https://github.com/mattlisiv/valhalla-service.git .
 ```
 Navigate to valhalla directory
 ```
-cd valhalla
+mkdir valhalla && cd valhalla
 ```
 
 Create a custom files directory
