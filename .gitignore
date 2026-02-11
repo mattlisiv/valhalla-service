@@ -1,6 +1,11 @@
-.idea/
-.DS_Store
-valhalla/custom_files/
-tileserver/data/
-routing/data/
-routing/__pycache__
+# Runtime map files
+valhalla/custom_files/*
+!valhalla/custom_files/.gitkeep
+
+# Let's Encrypt certificates and account material
+certbot/conf/*
+!certbot/conf/.gitkeep
+
+# ACME challenge webroot artifacts
+certbot/www/*
+!certbot/www/.gitkeep
