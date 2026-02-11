@@ -8,8 +8,6 @@ services:
     volumes:
       - ./valhalla/custom_files:/custom_files
     environment:
-      # Automatically use all .osm.pbf files in /custom_files directory
-      # Place your .osm.pbf files in ./valhalla/custom_files/
       - tile_urls=/custom_files/*.osm.pbf
       - server_threads=4
     healthcheck:
@@ -39,7 +37,6 @@ services:
     volumes:
       - ./certbot/www:/var/www/certbot
       - ./certbot/conf:/etc/letsencrypt
-    # no entrypoint, no command
 
   certbot-renew:
     image: certbot/certbot:latest
@@ -50,7 +47,6 @@ services:
       - ./certbot/conf:/etc/letsencrypt
     entrypoint: /bin/sh
     command: -c 'trap exit TERM; while :; do certbot renew --webroot -w /var/www/certbot --quiet; sleep 12h & wait $!; done'
-
 
 networks:
   default:
